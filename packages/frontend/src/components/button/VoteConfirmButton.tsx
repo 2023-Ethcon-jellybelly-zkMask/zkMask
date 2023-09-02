@@ -2,7 +2,6 @@ import React from 'react'
 import User from '../../contexts/User'
 
 function VoteConfirmButton() {
-<<<<<<< HEAD
     const userContext = React.useContext(User)
 
     const score = 2
@@ -44,10 +43,6 @@ function VoteConfirmButton() {
             className="mt-10 w-80 h-14 text-center rounded-lg bg-gray-200 text-white p-4"
             onClick={onClickVote}
         >
-=======
-    return(
-        <div className="mt-10 w-80 h-14 text-center rounded-lg bg-gray-200 text-white p-4 bg-primary-red">
->>>>>>> e727a6dfb069f785b94101f49ced1f3443cc095c
             Vote
         </div>
     );
