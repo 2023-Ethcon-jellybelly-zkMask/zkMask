@@ -1,3 +1,5 @@
+import React from 'react'
+import User from '../contexts/User'
 import { useEffect, useState } from "react";
 import { uploadImg } from "../firebase";
 
@@ -51,6 +53,7 @@ type Props = {
 const ConfirmUploadImage = ({ imgSrc, setImgSrc }: Props) => {
   const [preview, setPreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const userContext = React.useContext(User)
 
   const onClickUploadImage = async () => {
     if (!imgSrc) {
@@ -66,7 +69,12 @@ const ConfirmUploadImage = ({ imgSrc, setImgSrc }: Props) => {
     setLoading(true);
     try {
       console.log("call");
-      await uploadImg(imgSrc, "0xEA644e61a026c4f7c9D8499Ea772cA6e53E8A1a6");
+      const epochKeyProof = await userContext.userState!.genEpochKeyProof({
+        nonce: 0,
+      });
+      console.log("proof", epochKeyProof.proof)
+      const concatenatedString = epochKeyProof.proof.map(b => b.toString()).join('-');
+      await uploadImg(imgSrc, concatenatedString);
 
       alert("사진 등록에 성공했습니다")
 
