@@ -11,9 +11,20 @@ export default observer(() => {
   const userContext = useContext(User);
   const [imgSrc, setImgSrc] = useState<File | null>(null);
 
+  let score = 'N/A';
+  try {
+    score = userContext.data[0].toString();
+  } catch (error) {
+    console.error('An error occurred:', error);
+  }
+
   return (
     <>
       <Logo />
+      <div>
+        {/* 이게 voting 점수입니다 */}
+        Score: {score}
+      </div>
       <div className="mx-9 mb-16 mt-20">
         <h1 className="text-center">To generate a DID Get your photo voted on</h1>
       </div>

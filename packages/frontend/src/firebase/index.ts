@@ -22,7 +22,7 @@ export const storage = getStorage(app);
 // Functions
 // TODO: 이미지 파일명을 epoch_key.png로
 // TODO: firebase의 전체 이미지를 가져와서 파일명 배열로 한다 ~> epoch_key의 배열이다
-export const uploadImg = async (image: File, walletAddress: `0x${string}`) => {
+export const uploadImg = async (image: File, walletAddress: string) => {
   const imgRef = ref(storage, `images/${walletAddress}`);
   const snapshot = await uploadBytes(imgRef, image);
 
