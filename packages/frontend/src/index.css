@@ -36,4 +36,8 @@
   li {
     -webkit-tap-highlight-color: transparent;
   }
+
+  .bg-custom-gradient {
+    background: linear-gradient(0deg, #fd484f 0%, #ffcfd7 100%);
+  }
 }
