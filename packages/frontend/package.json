@@ -49,6 +49,18 @@
         "typescript": "^5.0.3",
         "webpack": "^5.74.0",
         "webpack-cli": "^4.10.0",
-        "webpack-dev-server": "^4.11.1"
+        "webpack-dev-server": "^4.11.1",
+        "autoprefixer": "^10.4.15",
+        "firebase": "^10.3.1",
+        "postcss": "^8.4.29",
+        "prettier-plugin-tailwindcss": "^0.5.4",
+        "recoil": "^0.7.7",
+        "tailwindcss": "^3.3.3",
+        "@typescript-eslint/eslint-plugin": "^6.0.0",
+        "@typescript-eslint/parser": "^6.0.0",
+        "eslint": "^8.45.0",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "eslint-plugin-react-refresh": "^0.4.3",
+        "prettier": "^3.0.3"
     }
 }
