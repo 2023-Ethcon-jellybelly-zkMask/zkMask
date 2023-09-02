@@ -1,10 +1,12 @@
-import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 import Header from './pages/Header'
 import Start from './pages/Start'
 import Dashboard from './pages/Dashboard'
 import './index.css'
+import Home from './pages/Home'
+import Receivevotes from './pages/Receivevotes'
+import Voting from './pages/Voting'
 
 export default function App() {
     return (
@@ -13,9 +15,22 @@ export default function App() {
                 <Route path="/" element={<Header />}>
                     <Route index element={<Start />} />
                     <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="front" element={<AppLayout />}>
+                        <Route index element={<Home />} />
+                        <Route path="recvotes" element={<Receivevotes />} />
+                        <Route path="rvoting" element={<Voting />} />
+                    </Route>
                 </Route>
             </Routes>
         </BrowserRouter>
+    )
+}
+
+const AppLayout = () => {
+    return (
+        <main className="mx-auto max-w-[313px]">
+            <Outlet />
+        </main>
     )
 }
 

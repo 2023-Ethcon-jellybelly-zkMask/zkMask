@@ -17,12 +17,12 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 // };
 
 const firebaseConfig = {
-    apiKey: '',
+    apiKey: process.env.REACT_APP_FIREBASE_KEY,
     authDomain: 'jellybelly-8ceef.firebaseapp.com',
     projectId: 'jellybelly-8ceef',
     storageBucket: 'jellybelly-8ceef.appspot.com',
     messagingSenderId: '742199351043',
-    appId: '',
+    appId: process.env.REACT_APP_FIREBASE_ID,
 }
 
 // Initialize Firebase
