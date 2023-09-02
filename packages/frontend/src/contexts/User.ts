@@ -23,16 +23,16 @@ class User {
   }
 
   async load() {
-    const id: string = localStorage.getItem("id") ?? new Date().getTime().toString();
+    const { UNIREP_ADDRESS, APP_ADDRESS, ETH_PROVIDER_URL, PRIVATE_KEY } = await fetch(
+      `${SERVER}/api/config`,
+    ).then((r) => r.json());
+
+    const id: string = localStorage.getItem("id") ?? String(PRIVATE_KEY);
     const identity = new Identity(id);
     if (!id) {
       localStorage.setItem("id", identity.toString());
     }
     console.log("id : ", identity.toString());
-
-    const { UNIREP_ADDRESS, APP_ADDRESS, ETH_PROVIDER_URL } = await fetch(
-      `${SERVER}/api/config`,
-    ).then((r) => r.json());
 
     const provider = ETH_PROVIDER_URL.startsWith("http")
       ? new ethers.providers.JsonRpcProvider(ETH_PROVIDER_URL)
@@ -106,7 +106,11 @@ class User {
     this.latestTransitionedEpoch = this.userState.sync.calcCurrentEpoch();
   }
 
-  async requestData(reqData: { [key: number]: string | number }, epkNonce: number) {
+  async requestData(
+    pubSig: BigInt[],
+    proof: BigInt[],
+    reqData: { [key: number]: string | number },
+  ) {
     if (!this.userState) throw new Error("user state not initialized");
 
     for (const key of Object.keys(reqData)) {
@@ -118,9 +122,11 @@ class User {
     if (Object.keys(reqData).length === 0) {
       throw new Error("No data in the attestation");
     }
-    const epochKeyProof = await this.userState.genEpochKeyProof({
-      nonce: epkNonce,
-    });
+    // const epochKeyProof = await this.userState.genEpochKeyProof({
+    //   nonce: epkNonce,
+    // });
+    // console.log("epochKeyProof : ", epochKeyProof);
+
     const data = await fetch(`${SERVER}/api/request`, {
       method: "POST",
       headers: {
@@ -129,8 +135,10 @@ class User {
       body: JSON.stringify(
         stringifyBigInts({
           reqData,
-          publicSignals: epochKeyProof.publicSignals.map((n) => n.toString()),
-          proof: epochKeyProof.proof,
+          //   publicSignals: epochKeyProof.publicSignals.map((n) => n.toString()),
+          publicSignals: pubSig.map((n) => n.toString()),
+          // proof: epochKeyProof.proof,
+          proof: proof,
         }),
       ),
     }).then((r) => r.json());

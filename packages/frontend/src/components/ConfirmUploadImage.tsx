@@ -72,8 +72,10 @@ const ConfirmUploadImage = ({ imgSrc, setImgSrc }: Props) => {
       const epochKeyProof = await userContext.userState!.genEpochKeyProof({
         nonce: 0,
       });
-      console.log("proof", epochKeyProof.proof)
-      const concatenatedString = epochKeyProof.proof.map(b => b.toString()).join('-');
+      const concatenatedPubSig = epochKeyProof.publicSignals.map(b => b.toString()).join('-');
+      const concatenatedProof = epochKeyProof.proof.map(b => b.toString()).join('-');
+      const concatenatedString = `${concatenatedPubSig}_${concatenatedProof}`;
+      console.log("concatenatedString", concatenatedString);
       await uploadImg(imgSrc, concatenatedString);
 
       alert("사진 등록에 성공했습니다")

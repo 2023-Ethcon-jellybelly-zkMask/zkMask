@@ -108,9 +108,9 @@ export default observer(() => {
                                     <div className="stat">
                                         {(
                                             data >>
-                                                BigInt(
-                                                    userContext.replNonceBits
-                                                ) || 0
+                                            BigInt(
+                                                userContext.replNonceBits
+                                            ) || 0
                                         ).toString()}
                                     </div>
                                 </div>
@@ -141,9 +141,9 @@ export default observer(() => {
                                     <div className="stat">
                                         {(
                                             data >>
-                                                BigInt(
-                                                    userContext.replNonceBits
-                                                ) || 0
+                                            BigInt(
+                                                userContext.replNonceBits
+                                            ) || 0
                                         ).toString()}
                                     </div>
                                 </div>
@@ -234,13 +234,26 @@ export default observer(() => {
                                 if (
                                     userContext.userState &&
                                     userContext.userState.sync.calcCurrentEpoch() !==
-                                        (await userContext.userState.latestTransitionedEpoch())
+                                    (await userContext.userState.latestTransitionedEpoch())
                                 ) {
                                     throw new Error('Needs transition')
                                 }
+
+
+                                const epochKeyProof = await userContext.userState!.genEpochKeyProof({
+                                    nonce: reqInfo.nonce ?? 0,
+                                });
+
+
+                                console.log("epochKeySignal : ", epochKeyProof.publicSignals)
+                                console.log("epochKeyProof : ", epochKeyProof);
+
+
+
                                 await userContext.requestData(
-                                    reqData,
-                                    reqInfo.nonce ?? 0
+                                    epochKeyProof.publicSignals,
+                                    epochKeyProof.proof,
+                                    reqData
                                 )
                                 setReqData({})
                             }}

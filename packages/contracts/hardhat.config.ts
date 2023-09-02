@@ -1,11 +1,16 @@
 import '@typechain/hardhat'
 import '@nomiclabs/hardhat-ethers'
+require('dotenv').config()
 
 export default {
     defaultNetwork: 'local',
     networks: {
         hardhat: {
             blockGasLimit: 12000000,
+        },
+        mumbai: {
+            url: process.env.ETH_PROVIDER_URL,
+            accounts: [process.env.PRIVATE_KEY],
         },
         local: {
             url: 'http://127.0.0.1:8545',
