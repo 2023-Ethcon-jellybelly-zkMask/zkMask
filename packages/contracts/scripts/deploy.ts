@@ -13,13 +13,14 @@ deployApp().catch((err) => {
 
 export async function deployApp() {
     const [signer] = await ethers.getSigners()
-    const unirep = await deployUnirep(signer)
+    // const unirep = await deployUnirep(signer)
+    const unirepAddress = '0x4D137bb44553d55AE6B28B5391c6f537b06C9cc3'
 
     const verifierF = await ethers.getContractFactory('DataProofVerifier')
     const verifier = await verifierF.deploy()
     await verifier.deployed()
     const App = await ethers.getContractFactory('UnirepApp')
-    const app = await App.deploy(unirep.address, verifier.address, epochLength)
+    const app = await App.deploy(unirepAddress, verifier.address, epochLength)
 
     await app.deployed()
 
@@ -28,7 +29,7 @@ export async function deployApp() {
     )
 
     const config = `export default {
-    UNIREP_ADDRESS: '${unirep.address}',
+    UNIREP_ADDRESS: '${unirepAddress}',
     APP_ADDRESS: '${app.address}',
     ETH_PROVIDER_URL: '${hardhat.network.config.url ?? ''}',
     ${

@@ -130,12 +130,13 @@ export class TransactionManager {
             })
         }
         const nonce = await this.getNonce(this.wallet.address)
+        const gasPrice = await this.wallet.provider.getGasPrice()
         const signedData = await this.wallet.signTransaction({
             nonce,
             to,
             // gasPrice: 2 * 10 ** 9, // 2 gwei
             // gasPrice: 10000,
-            gasPrice: 299365979,
+            gasPrice: gasPrice.mul(1.5).toNumber(),
             ...args,
         })
         await this._db?.create('AccountTransaction', {
