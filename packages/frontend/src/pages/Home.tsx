@@ -1,29 +1,26 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import UploadPhotoFrame from "../components/UploadPhotoFrame";
-import ZkMask from "../components/ZkMask";
-import MatchingButton from "../components/button/MatchingButton";
-import VotingButton from "../components/button/VotingButton";
+import MatchingLink from "../components/button/MatchingLink";
+import VotingLink from "../components/button/VotingLink";
 import ConfirmUploadImage from "../components/ConfirmUploadImage";
-import User from "../contexts/User";
+import Logo from "../components/Logo";
 
 function Home() {
-  const userContext = useContext(User);
   const [imgSrc, setImgSrc] = useState<File | null>(null);
 
-  console.log(userContext.data);
   return (
     <>
-      <ZkMask />
+      <Logo />
       <div className="mx-9 mb-16 mt-20">
         <h1 className="text-center">
-          To generate a DID
-          <br />
-          Get your photo voted on
+          To generate a DID Get your photo voted on
         </h1>
       </div>
       <UploadPhotoFrame setThumbnail={setImgSrc} />
-      <VotingButton />
-      <MatchingButton />
+      <div className="flex flex-col gap-4 mt-[123px]">
+        <VotingLink />
+        <MatchingLink />
+      </div>
       {imgSrc && <ConfirmUploadImage imgSrc={imgSrc} setImgSrc={setImgSrc} />}
     </>
   );

@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply font-body font-[14px];
+    @apply font-body text-[14px];
   }
 
   h1,
@@ -16,6 +16,8 @@
 
   h1 {
     font-size: 28px;
+    line-height: 36px;
+    letter-spacing: -0.4px;
   }
 
   h2 {
