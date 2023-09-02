@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import UploadPhotoFrame from "../components/UploadPhotoFrame";
 import ZkMask from "../components/ZkMask";
 import MatchingButton from "../components/button/MatchingButton";
 import VotingButton from "../components/button/VotingButton";
 import ConfirmUploadImage from "../components/ConfirmUploadImage";
+import User from "../contexts/User";
 
 function Home() {
+  const userContext = useContext(User)
   const [imgSrc, setImgSrc] = useState<File | null>(null);
 
+  console.log(userContext.data)
   return (
     <>
       <ZkMask />

@@ -66,7 +66,7 @@ export default observer(() => {
                             >
                                 USER ADDED!
                             </p>
-                            <Link to="/dashboard">
+                            <Link to="/front">
                                 <Button>
                                     Dashboard
                                     <span style={{ marginLeft: '12px' }}>
