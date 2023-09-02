@@ -28,7 +28,7 @@ const Score: React.FC<ScoreProps> = (props: ScoreProps) => {
               onClick={() => props.setScore(idx + 1)}
               className={cls(
                 props.score >= idx + 1 ? "text-gray-300" : "text-gray-100",
-                "cursor-pointer border-none outline-none",
+                "cursor-pointer text-red border-none outline-none",
               )}
             >
               <Star />
