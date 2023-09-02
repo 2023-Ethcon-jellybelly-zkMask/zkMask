@@ -26,7 +26,6 @@ const Voting = () => {
     <>
       <VotingTopBar />
       <CardSection />
-      <GenderSection />
       <Score score={score} setScore={setScore} />
       <VoteConfirmButton />
     </>
