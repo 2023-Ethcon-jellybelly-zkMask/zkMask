@@ -18,9 +18,9 @@ export default function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<Start />} />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="login" element={<Login />} />
           <Route path="front" element={<AppLayout />}>
             <Route index element={<Home />} />
-            <Route path="login" element={<Login />} />
             <Route path="voting" element={<Voting />} />R
           </Route>
         </Route>
@@ -50,7 +50,7 @@ const AppLayout = observer(() => {
     }
 
     if (!userContext.hasSignedUp) {
-      navigate("/front/login");
+      navigate("/login");
     } else {
       navigate("/front");
     }
