@@ -7,10 +7,10 @@ import ConfirmUploadImage from "../components/ConfirmUploadImage";
 import User from "../contexts/User";
 
 function Home() {
-  const userContext = useContext(User)
+  const userContext = useContext(User);
   const [imgSrc, setImgSrc] = useState<File | null>(null);
 
-  console.log(userContext.data)
+  console.log(userContext.data);
   return (
     <>
       <ZkMask />
