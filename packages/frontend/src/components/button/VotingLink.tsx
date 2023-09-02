@@ -2,12 +2,9 @@ import { Link } from "react-router-dom";
 
 function VotingLink() {
   return (
-    <Link
-      to={"/voting"}
-      className="mt-32 rounded-lg w-80 h-12 text-center text-lg border-2 border-primary-red text-primary-red p-2"
-    >
-      Voting
-    </Link>
+    <h4 className="rounded-lg h-14 border-2 border-primary-red text-primary-red flex justify-center items-center">
+      <Link to={"/front/voting"}>Voting</Link>
+    </h4>
   );
 }
 
