@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply font-body font-[14px];
+    @apply font-body text-[14px];
   }
 
   h1,
