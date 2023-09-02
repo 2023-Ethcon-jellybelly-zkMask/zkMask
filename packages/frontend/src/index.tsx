@@ -6,9 +6,10 @@ import Dashboard from "./pages/Dashboard";
 import "./index.css";
 import Home from "./pages/Home";
 import Voting from "./pages/Voting";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import User from "./contexts/User";
 import Login from "./pages/Login";
+import { observer } from "mobx-react-lite";
 
 export default function App() {
   return (
@@ -17,9 +18,9 @@ export default function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<Start />} />
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="login" element={<Login />} />
           <Route path="front" element={<AppLayout />}>
             <Route index element={<Home />} />
+            <Route path="login" element={<Login />} />
             <Route path="voting" element={<Voting />} />R
           </Route>
         </Route>
@@ -28,27 +29,43 @@ export default function App() {
   );
 }
 
-const AppLayout = () => {
+const AppLayout = observer(() => {
   const navigate = useNavigate();
   const userContext = useContext(User);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    console.log(userContext.hasSignedUp);
+    // 로딩 완료 후 실행될 로직
+    const checkSignedUp = async () => {
+      await userContext.load(); // 가정: hasSignedUp을 결정하는 비동기 함수
+      setIsLoading(false);
+    };
 
-    if (userContext.hasSignedUp) {
-      navigate("/login"); // 로그인 페이지로 이동
-      return;
+    checkSignedUp();
+  }, [userContext]);
+
+  useEffect(() => {
+    if (isLoading) {
+      return; // 로딩 중일 때는 라우팅을 실행하지 않음
     }
 
-    navigate("/front"); // Home으로 이동
-  }, [userContext.hasSignedUp, navigate]);
+    if (!userContext.hasSignedUp) {
+      navigate("/front/login");
+    } else {
+      navigate("/front");
+    }
+  }, [userContext.hasSignedUp, navigate, isLoading]);
+
+  if (isLoading) {
+    return <div className="w-screen h-screen bg-custom-gradient" />;
+  }
 
   return (
     <main className="mx-auto max-w-[313px] my-20">
       <Outlet />
     </main>
   );
-};
+});
 
 const rootElement = document.getElementById("root");
 if (rootElement) {
