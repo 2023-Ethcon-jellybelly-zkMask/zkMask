@@ -17,8 +17,7 @@ export default function App() {
                     <Route path="dashboard" element={<Dashboard />} />
                     <Route path="front" element={<AppLayout />}>
                         <Route index element={<Home />} />
-                        <Route path="recvotes" element={<Receivevotes />} />
-                        <Route path="rvoting" element={<Voting />} />
+                        <Route path="voting" element={<Voting />} />
                     </Route>
                 </Route>
             </Routes>

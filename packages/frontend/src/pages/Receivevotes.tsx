@@ -1,7 +1,7 @@
 import UploadedPhotoFrame from "../components/UploadedPhotoFrame";
 import ZkMask from "../components/ZkMask";
-import MatchingButton from "../components/button/MatchingButton";
-import VotingButton from "../components/button/VotingButton";
+import MatchingLink from "../components/button/MatchingLink";
+import VotingLink from "../components/button/VotingLink";
 
 function Receivevotes() {
     return(
@@ -11,8 +11,8 @@ function Receivevotes() {
                 <h1 className="text-center">Voting on a photo</h1>
             </div>
             <UploadedPhotoFrame />
-            <VotingButton />
-            <MatchingButton />
+            <VotingLink />
+            <MatchingLink />
         </>
     )
 }

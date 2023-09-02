@@ -16,7 +16,7 @@ function UploadPhotoFrame({ setThumbnail }: Props) {
 
   return (
     <div
-      className="mx-auto h-48 w-72 rounded-2xl bg-gray-200 py-16 text-center"
+      className="mx-auto h-48 w-72 rounded-2xl bg-gray-100 py-16 text-center"
       onClick={handleDivClick}
     >
       <input

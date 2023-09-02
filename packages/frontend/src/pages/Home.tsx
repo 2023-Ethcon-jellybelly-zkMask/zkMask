@@ -1,8 +1,8 @@
 import { useState } from "react";
 import UploadPhotoFrame from "../components/UploadPhotoFrame";
 import ZkMask from "../components/ZkMask";
-import MatchingButton from "../components/button/MatchingButton";
-import VotingButton from "../components/button/VotingButton";
+import MatchingLink from "../components/button/MatchingLink";
+import VotingLink from "../components/button/VotingLink";
 import ConfirmUploadImage from "../components/ConfirmUploadImage";
 
 function Home() {
@@ -19,8 +19,8 @@ function Home() {
         </h1>
       </div>
       <UploadPhotoFrame setThumbnail={setImgSrc} />
-      <VotingButton />
-      <MatchingButton />
+      <VotingLink />
+      <MatchingLink />
       {imgSrc && <ConfirmUploadImage imgSrc={imgSrc} setImgSrc={setImgSrc} />}
     </>
   );
