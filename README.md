@@ -35,8 +35,30 @@ npm
 ```
 npm install npm@latest -g
 ```
-### Usage
-1. First you can run this by build and execution process.
-2. 
-3. 
 
+### Usage
+
+1. First you can run this by build and execution process.
+   ``` yarn build ```
+2. Start the contact node
+   ```yarn contracts hardhat node```
+3.  Deploy smart contracts
+   ```yarn contracts deploy```
+4. Start a relayer (backend)
+   ```yarn relay start```
+5. Start a frontend
+   ```yarn frontend start```
+
+This application has Webpack Framework, therefore it will be running at: http://localhost:3000/
+
+### Team Member
+
+Sangweon Moon: 
+
+Taeuk Ham: 
+
+Suhyun Kim: Frontend Web Designer
+
+Changeon Park: Frontend and Web3 Engineer
+
+Uijin Han: Frontend Engineer
