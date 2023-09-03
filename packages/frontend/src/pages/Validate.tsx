@@ -1,20 +1,58 @@
-import { useState } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import Logo from "../components/Logo";
+import User from "../contexts/User";
+import { observer } from "mobx-react-lite";
 
-const Validate = () => {
+type ProofInfo = {
+  publicSignals: string[]
+  proof: string[]
+  valid: boolean
+}
+
+
+export default observer(() => {
   const [isSubmit, setIsSubmit] = useState<boolean>(false);
   const [isValidated, setIsValidated] = useState<boolean>(false);
+  const [score, setScore] = useState<number>(0);
+  const [repProof, setRepProof] = React.useState<ProofInfo>({
+    publicSignals: [],
+    proof: [],
+    valid: false,
+  })
+
+  useEffect(() => {
+    if (repProof.valid) {
+      setIsValidated(true)
+    }
+  }
+    , [repProof])
+
+  const userContext = React.useContext(User)
 
   if (!isSubmit) {
     return (
       <div className="flex flex-col justify-center items-center">
         <Logo />
         <h1 className="mt-[211px]">Is it more than?</h1>
-        <input className="mt-6 w-[130px] h-[56px] text-black bg-white border-2 rounded-lg border-gray-200 focus:outline-none" />
+        <input className="mt-6 w-[130px] h-[56px] text-black bg-white border-2 rounded-lg border-gray-200 focus:outline-none"
+          onChange={(e) => {
+            setScore(Number(e.target.value));
+          }
+          }
+        />
 
         <button
-          onClick={() => {
-            setIsSubmit(true);
+          onClick={async () => {
+            const proveData = {
+              [0]: score,
+            };
+
+            const proof =
+              await userContext.proveData(
+                proveData
+              )
+            setRepProof(proof)
             // TODO: isvalidated state boolean 변경되도록!
           }}
           className="mt-[83px] w-full h-[56px] bg-secondary-blue flex justify-center items-center rounded-lg text-white"
@@ -86,6 +124,4 @@ const Validate = () => {
       <h1 className="">Unverified!</h1>
     </div>
   );
-};
-
-export default Validate;
+})

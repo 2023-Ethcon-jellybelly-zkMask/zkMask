@@ -14,6 +14,10 @@ export default {
             url: process.env.ETH_PROVIDER_URL,
             accounts: [process.env.PRIVATE_KEY],
         },
+        linea: {
+            url: process.env.LIM_PROVIDER_URL,
+            accounts: [process.env.PRIVATE_KEY],
+        },
         local: {
             url: 'http://127.0.0.1:8545',
             blockGasLimit: 12000000,

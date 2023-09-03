@@ -330,6 +330,7 @@ export default observer(() => {
                             <Button
                                 onClick={async () => {
                                     try {
+                                        console.log(proveData)
                                         const proof =
                                             await userContext.proveData(
                                                 proveData
