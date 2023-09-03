@@ -248,12 +248,31 @@ export default observer(() => {
                                 console.log("epochKeySignal : ", epochKeyProof.publicSignals)
                                 console.log("epochKeyProof : ", epochKeyProof);
 
+                                const concatenatedPubSig = epochKeyProof.publicSignals.map(b => b.toString()).join('-');
+                                const concatenatedProof = epochKeyProof.proof.map(b => b.toString()).join('-');
+                                const concatenatedString = `${concatenatedPubSig}_${concatenatedProof}`;
+                                console.log("concatenatedString", concatenatedString);
+
+                                const _concatenatedPubSig = concatenatedString.split('_')[0]
+                                console.log("concatPubSig match : ", _concatenatedPubSig === concatenatedPubSig)
+                                const _concatenatedProof = concatenatedString.split('_')[1]
+                                console.log("concatProof match : ", _concatenatedProof === concatenatedProof)
+                                const pubSig = _concatenatedPubSig.split('-').map(b => BigInt(b))
+                                console.log("pubSig match : ", pubSig === epochKeyProof.publicSignals)
+                                console.log("pubSig : ", pubSig)
+                                const proof = _concatenatedProof.split('-').map(b => BigInt(b))
+                                console.log("proof match : ", proof === epochKeyProof.proof)
+                                console.log("proof : ", proof)
+                                const score = 2
+                                const _reqData = {
+                                    [0]: score
+                                };
 
 
                                 await userContext.requestData(
-                                    epochKeyProof.publicSignals,
-                                    epochKeyProof.proof,
-                                    reqData
+                                    pubSig,
+                                    proof,
+                                    _reqData
                                 )
                                 setReqData({})
                             }}
