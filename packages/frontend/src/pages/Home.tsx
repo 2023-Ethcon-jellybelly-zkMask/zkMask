@@ -37,12 +37,8 @@ export default observer(() => {
   return (
     <>
       <Logo />
-      <div>
-        <Link to="/front/validate">밸리데이트</Link>
-        {/* 이게 voting 점수입니다 */}
-        Score: {userContext.data[0] ? userContext.data[0].toString() : ""}
-      </div>
-      <div>RemainingTiming: {remainingTime}</div>
+      
+      {/* 코드 메모장에서 붙여넣어야 함 */}
 
       {true ? (
         <>
