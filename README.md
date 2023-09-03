@@ -25,29 +25,39 @@ Backend:
 ### Installation
 
 1. Clone this repository and install packages
-```
-git clone https://github.com/2023-Ethcon-jellybelly-zkMask/zkMask/
-```
+   ```
+   git clone https://github.com/2023-Ethcon-jellybelly-zkMask/zkMask/
+   ```
 2. Install Packages.
-```
-npm
-```
-```
-npm install npm@latest -g
-```
+   ```
+   npm
+   ```
+   ```
+   npm install npm@latest -g
+   ```
 
 ### Usage
 
 1. First you can run this by build and execution process.
-   ``` yarn build ```
+   ```
+   yarn build
+   ```
 2. Start the contact node
-   ```yarn contracts hardhat node```
-3.  Deploy smart contracts
-   ```yarn contracts deploy```
+   ```
+   yarn contracts hardhat node
+   ```
+3. Deploy smart contracts
+   ```
+   yarn contracts deploy
+   ```
 4. Start a relayer (backend)
-   ```yarn relay start```
+   ```
+   yarn relay start
+   ```
 5. Start a frontend
-   ```yarn frontend start```
+   ```
+   yarn frontend start
+   ```
 
 This application has Webpack Framework, therefore it will be running at: http://localhost:3000/
 
