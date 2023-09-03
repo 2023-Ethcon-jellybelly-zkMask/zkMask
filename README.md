@@ -9,16 +9,31 @@ Random Matching and Dating without exposure of your face. Distributed Web techno
 
 This application was created using the following libraries and frameworks. 
 
-Frontend: 
+### Frontend
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
 ![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
 
-dApp Framework:
+### dApp Framework
 
-Backend:
+Unirep(https://github.com/Unirep/Unirep)
+
+UniRep is a private and non-repudiable, decentralized data system.
+
+
+Polygonscan(Polygon Chain Mumbai)
+
+https://mumbai.polygonscan.com/address/0x57D445fEA3c06b83C1a88ac00fbbdeA0b4cc90A6
+
+### Backend
+
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Solidity](https://img.shields.io/badge/Solidity-%23363636.svg?style=for-the-badge&logo=solidity&logoColor=white)
+![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)
 
 ## Getting Started
 
@@ -74,16 +89,3 @@ You can date people who have the style you like without revealing your face and 
 ### Meeting Chat
 
 You can chat with people who you met at Blind Date Matching!
-
-
-## Team Member
-
-Sangweon Moon: 
-
-Taeuk Ham: 
-
-Suhyun Kim: Frontend Web Designer
-
-Changeon Park: Frontend and Web3 Engineer
-
-Uijin Han: Frontend Engineer
