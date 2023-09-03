@@ -30,7 +30,7 @@ export const uploadImg = async (image: File, walletAddress: string) => {
   return await getDownloadURL(snapshot.ref);
 };
 
-export const getAllFileNames = async () => {
+export const getAllFileUrlsAndNames = async () => {
   // Create a reference under which you want to list
   const storageRef = ref(getStorage());
   const imagesRef = ref(storageRef, "images/");
@@ -38,14 +38,20 @@ export const getAllFileNames = async () => {
   // Fetch the list of all items
   const res = await listAll(imagesRef);
 
-  // Array to keep the names
-  let fileNames: string[] = [];
+  // Array to keep the names and URLs
+  let files: { name: string; url: string }[] = [];
 
   // Loop over each item
-  res.items.forEach((itemRef) => {
+  for (const itemRef of res.items) {
     // Get the name of the file
-    fileNames.push(itemRef.name);
-  });
+    const fileName = itemRef.name;
 
-  return fileNames;
+    // Get the download URL of the file
+    const fileUrl = await getDownloadURL(itemRef);
+
+    // Add the file info to the array
+    files.push({ name: fileName, url: fileUrl });
+  }
+
+  return files;
 };

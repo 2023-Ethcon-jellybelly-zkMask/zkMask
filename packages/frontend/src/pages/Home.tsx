@@ -54,10 +54,10 @@ export default observer(() => {
       </div>
       <div>RemainingTiming: {remainingTime}</div>
 
-      {remainingTime === 0 ? (
+      {true ? (
         <>
-          <div className="mb-16 mt-20">
-            <h1 className="text-center text-[26px]">
+          <div className="mb-16 mt-20 text-center">
+            <h1>
               To generate a DID
               <br /> Get your photo voted on
             </h1>
@@ -67,11 +67,58 @@ export default observer(() => {
       ) : (
         <>
           <div className="mb-16 mt-20 text-center">
-            <h1 className="text-[26px]">Your photo is being voted</h1>
-            <h3 className="text-gray-200 text-[18px]">Vote for other people's photos too</h3>
+            <h1>Your photo is being voted</h1>
+            <h3 className="text-gray-200">Vote for other people's photos too</h3>
           </div>
-          <div className="mx-auto h-48 w-72 rounded-2xl bg-gray-100 py-16 text-center">
-            <p className="rounded-full border-2 border-gray-200 w-40 h-14 mx-auto py-4 font-medium text-[16px]">
+          <div className="relative mx-auto h-48 w-72 rounded-2xl bg-gray-100 py-16 text-center">
+            <svg
+              width="259"
+              height="190"
+              viewBox="0 0 259 190"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
+              <g id="Vector" filter="url(#filter0_f_120_369)">
+                <path
+                  d="M228.125 80.4956C228.125 50.3982 203.778 26 173.749 26C155.519 26 139.433 35.0182 129.563 48.8022C119.693 35.0182 103.606 26 85.3817 26C55.3472 26 31 50.3927 31 80.4956C31 84.759 31.5401 88.8898 32.4659 92.8715C40.0159 139.884 92.1766 189.481 129.563 203.1C166.943 189.481 219.109 139.884 226.648 92.877C227.585 88.8953 228.125 84.7645 228.125 80.4956Z"
+                  fill="url(#paint0_linear_120_369)"
+                />
+              </g>
+              <defs>
+                <filter
+                  id="filter0_f_120_369"
+                  x="0.961876"
+                  y="-4.03812"
+                  width="257.202"
+                  height="237.176"
+                  filterUnits="userSpaceOnUse"
+                  colorInterpolationFilters="sRGB"
+                >
+                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                  <feBlend
+                    mode="normal"
+                    in="SourceGraphic"
+                    in2="BackgroundImageFix"
+                    result="shape"
+                  />
+                  <feGaussianBlur stdDeviation="15.0191" result="effect1_foregroundBlur_120_369" />
+                </filter>
+                <linearGradient
+                  id="paint0_linear_120_369"
+                  x1="129.924"
+                  y1="203.1"
+                  x2="129.924"
+                  y2="40.8186"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stopColor="#FD484F" />
+                  <stop offset="1" stopColor="#FFCFD7" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            <p className="relative rounded-full border-2 border-white text-white w-40 h-14 mx-auto py-4 font-medium text-[16px] z-10">
               Generating
             </p>
           </div>
