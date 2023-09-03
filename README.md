@@ -22,5 +22,21 @@ Backend:
 
 ## Getting Started
 
+### Installation
 
+1. Clone this repository and install packages
+```
+git clone https://github.com/2023-Ethcon-jellybelly-zkMask/zkMask/
+```
+2. Install Packages.
+```
+npm
+```
+```
+npm install npm@latest -g
+```
+### Usage
+1. First you can run this by build and execution process.
+2. 
+3. 
 
