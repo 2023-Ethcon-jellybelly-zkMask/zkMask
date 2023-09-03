@@ -9,16 +9,31 @@ Random Matching and Dating without exposure of your face. Distributed Web techno
 
 This application was created using the following libraries and frameworks. 
 
-Frontend: 
+### Frontend
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
 ![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
 
-dApp Framework:
+### dApp Framework
 
-Backend:
+Unirep(https://github.com/Unirep/Unirep)
+
+UniRep is a private and non-repudiable, decentralized data system.
+
+
+Polygonscan(Polygon Chain Mumbai)
+
+https://mumbai.polygonscan.com/address/0x57D445fEA3c06b83C1a88ac00fbbdeA0b4cc90A6
+
+### Backend
+
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Solidity](https://img.shields.io/badge/Solidity-%23363636.svg?style=for-the-badge&logo=solidity&logoColor=white)
+![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)
 
 ## Getting Started
 
@@ -61,14 +76,16 @@ Backend:
 
 This application has Webpack Framework, therefore it will be running at: http://localhost:3000/
 
-### Team Member
+## Features
 
-Sangweon Moon: 
+<img width="742" alt="스크린샷 2023-09-03 12 30 51" src="https://github.com/2023-Ethcon-jellybelly-zkMask/zkMask/assets/62194473/ab8f92cf-7058-4d77-8188-7d13596984f0">
 
-Taeuk Ham: 
+This application has two main features.
 
-Suhyun Kim: Frontend Web Designer
+### Blind Date Matching
 
-Changeon Park: Frontend and Web3 Engineer
+You can date people who have the style you like without revealing your face and private life.
 
-Uijin Han: Frontend Engineer
+### Meeting Chat
+
+You can chat with people who you met at Blind Date Matching!
