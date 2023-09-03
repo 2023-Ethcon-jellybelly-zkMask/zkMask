@@ -5,11 +5,10 @@ import User from "../contexts/User";
 import { observer } from "mobx-react-lite";
 
 type ProofInfo = {
-  publicSignals: string[]
-  proof: string[]
-  valid: boolean
-}
-
+  publicSignals: string[];
+  proof: string[];
+  valid: boolean;
+};
 
 export default observer(() => {
   const [isSubmit, setIsSubmit] = useState<boolean>(false);
@@ -19,27 +18,27 @@ export default observer(() => {
     publicSignals: [],
     proof: [],
     valid: false,
-  })
+  });
 
   useEffect(() => {
     if (repProof.valid) {
-      setIsValidated(true)
+      setIsSubmit(true);
+      setIsValidated(true);
     }
-  }
-    , [repProof])
+  }, [repProof.valid]);
 
-  const userContext = React.useContext(User)
+  const userContext = React.useContext(User);
 
   if (!isSubmit) {
     return (
       <div className="flex flex-col justify-center items-center">
         <Logo />
         <h1 className="mt-[211px]">Is it more than?</h1>
-        <input className="mt-6 w-[130px] h-[56px] text-black bg-white border-2 rounded-lg border-gray-200 focus:outline-none"
+        <input
+          className="mt-6 w-[130px] h-[56px] text-black bg-white border-2 rounded-lg border-gray-200 focus:outline-none"
           onChange={(e) => {
             setScore(Number(e.target.value));
-          }
-          }
+          }}
         />
 
         <button
@@ -47,7 +46,7 @@ export default observer(() => {
             if (
               userContext.userState &&
               userContext.userState.sync.calcCurrentEpoch() !==
-              (await userContext.userState.latestTransitionedEpoch())
+                (await userContext.userState.latestTransitionedEpoch())
             ) {
               // throw new Error('Needs transition')
               console.log("Current epoch", userContext.userState.sync.calcCurrentEpoch());
@@ -56,16 +55,12 @@ export default observer(() => {
               console.log("Transitioned");
             }
 
-
             const proveData = {
               [0]: score,
             };
 
-            const proof =
-              await userContext.proveData(
-                proveData
-              )
-            setRepProof(proof)
+            const proof = await userContext.proveData(proveData);
+            setRepProof(proof);
             // TODO: isvalidated state boolean 변경되도록!
           }}
           className="mt-[83px] w-full h-[56px] bg-secondary-blue flex justify-center items-center rounded-lg text-white"
@@ -137,4 +132,4 @@ export default observer(() => {
       <h1 className="">Unverified!</h1>
     </div>
   );
-})
+});
