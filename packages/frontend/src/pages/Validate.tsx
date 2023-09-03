@@ -44,6 +44,19 @@ export default observer(() => {
 
         <button
           onClick={async () => {
+            if (
+              userContext.userState &&
+              userContext.userState.sync.calcCurrentEpoch() !==
+              (await userContext.userState.latestTransitionedEpoch())
+            ) {
+              // throw new Error('Needs transition')
+              console.log("Current epoch", userContext.userState.sync.calcCurrentEpoch());
+              console.log("Needs transition");
+              await userContext.stateTransition();
+              console.log("Transitioned");
+            }
+
+
             const proveData = {
               [0]: score,
             };
