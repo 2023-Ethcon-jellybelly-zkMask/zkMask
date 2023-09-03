@@ -61,7 +61,22 @@ Backend:
 
 This application has Webpack Framework, therefore it will be running at: http://localhost:3000/
 
-### Team Member
+## Features
+
+<img width="742" alt="스크린샷 2023-09-03 12 30 51" src="https://github.com/2023-Ethcon-jellybelly-zkMask/zkMask/assets/62194473/ab8f92cf-7058-4d77-8188-7d13596984f0">
+
+This application has two main features.
+
+### Blind Date Matching
+
+You can date people who have the style you like without revealing your face and private life.
+
+### Meeting Chat
+
+You can chat with people who you met at Blind Date Matching!
+
+
+## Team Member
 
 Sangweon Moon: 
 
