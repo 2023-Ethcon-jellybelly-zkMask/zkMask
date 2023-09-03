@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 export default observer(() => {
   const userContext = useContext(User);
   const [imgSrc, setImgSrc] = useState<File | null>(null);
-  const [score, setScore] = useState<bigint | null>(null);
+
   const [remainingTime, setRemainingTime] = useState<number | string>(0);
 
   const updateTimer = () => {
@@ -24,16 +24,6 @@ export default observer(() => {
   };
 
   useEffect(() => {
-    (async () => {
-      try {
-        const data = userContext.data[0];
-        console.log(`data: `, data);
-        setScore(data);
-      } catch (error) {
-        console.error("An error occurred:", error);
-      }
-    })();
-
     const intervalId = setInterval(() => {
       updateTimer();
     }, 1000);
@@ -50,7 +40,7 @@ export default observer(() => {
       <div>
         <Link to="/front/validate">밸리데이트</Link>
         {/* 이게 voting 점수입니다 */}
-        Score: {score ? score.toString() : 0}
+        Score: {userContext.data[0] ? userContext.data[0].toString() : ""}
       </div>
       <div>RemainingTiming: {remainingTime}</div>
 
