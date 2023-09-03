@@ -37,6 +37,14 @@ https://mumbai.polygonscan.com/address/0x57D445fEA3c06b83C1a88ac00fbbdeA0b4cc90A
 
 ## :smile: Getting Started
 
+### :battery: Requirements
+
+Intall rust and circom
+
+Node.js >=16.14
+
+Firebase, Docker (If needed to add server)
+
 ### Installation
 
 1. Clone this repository and install packages
