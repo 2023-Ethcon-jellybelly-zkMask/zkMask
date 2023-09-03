@@ -14,7 +14,9 @@ deployApp().catch((err) => {
 export async function deployApp() {
     const [signer] = await ethers.getSigners()
     // const unirep = await deployUnirep(signer)
-    const unirepAddress = '0x4D137bb44553d55AE6B28B5391c6f537b06C9cc3'
+    const unirepAddress = '0xC2cEAF60fA88aE56fD2eC3Fa2997034c1201bF3A'
+    // const unirepAddress = unirep.address
+    console.log(`Unirep is deployed at address: ${unirepAddress}`)
 
     const verifierF = await ethers.getContractFactory('DataProofVerifier')
     const verifier = await verifierF.deploy()

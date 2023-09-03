@@ -42,7 +42,6 @@ export default (app: Express, prover: Prover, synchronizer: Synchronizer) => {
                     ]
                 )
             }
-
             const hash = await TransactionManager.queueTransaction(
                 APP_ADDRESS,
                 calldata

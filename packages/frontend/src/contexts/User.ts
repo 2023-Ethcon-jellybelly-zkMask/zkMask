@@ -26,6 +26,10 @@ class User {
     const { UNIREP_ADDRESS, APP_ADDRESS, ETH_PROVIDER_URL, PRIVATE_KEY } = await fetch(
       `${SERVER}/api/config`,
     ).then((r) => r.json());
+    console.log("UNIREP_ADDRESS : ", UNIREP_ADDRESS);
+    console.log("APP_ADDRESS : ", APP_ADDRESS);
+    console.log("ETH_PROVIDER_URL : ", ETH_PROVIDER_URL);
+    console.log("PRIVATE_KEY : ", PRIVATE_KEY);
 
     const id: string = localStorage.getItem("id") ?? String(PRIVATE_KEY);
     const identity = new Identity(id);

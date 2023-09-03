@@ -2,6 +2,8 @@ import '@typechain/hardhat'
 import '@nomiclabs/hardhat-ethers'
 require('dotenv').config()
 
+const { ethers } = require('ethers')
+
 export default {
     defaultNetwork: 'local',
     networks: {
@@ -10,6 +12,10 @@ export default {
         },
         mumbai: {
             url: process.env.ETH_PROVIDER_URL,
+            accounts: [process.env.PRIVATE_KEY],
+        },
+        zkevm: {
+            url: process.env.ZVM_PROVIDER_URL,
             accounts: [process.env.PRIVATE_KEY],
         },
         local: {

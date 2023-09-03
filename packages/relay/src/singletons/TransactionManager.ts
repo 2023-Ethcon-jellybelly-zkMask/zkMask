@@ -120,25 +120,48 @@ export class TransactionManager {
         if (!args.gasLimit) {
             // don't estimate, use this for unpredictable gas limit tx's
             // transactions may revert with this
-            const gasLimit = await this.wallet.provider.estimateGas({
-                to,
-                from: this.wallet.address,
-                ...args,
-            })
+            var gasLimit = ethers.BigNumber.from('10000000')
+            try {
+                gasLimit = await this.wallet.provider.estimateGas({
+                    to,
+                    from: this.wallet.address,
+                    ...args,
+                })
+            } catch (err: any) {
+                console.log(err)
+                console.log('Using default gas limit')
+            }
+
             Object.assign(args, {
                 gasLimit: gasLimit.add(50000),
             })
         }
+
         const nonce = await this.getNonce(this.wallet.address)
-        const gasPrice = await this.wallet.provider.getGasPrice()
+        // gas price is 0.1 gwei
+        var gasPrice = ethers.utils.parseUnits('0.1', 'gwei')
+        try {
+            gasPrice = await this.wallet.provider.getGasPrice()
+            gasPrice = gasPrice.mul(2)
+        } catch (err: any) {
+            console.log(err)
+            console.log('Using default gas price')
+        }
+        console.log(`Using gas price ${gasPrice.toString()}`)
+        const chainId = await this.wallet.provider
+            .getNetwork()
+            .then((n) => n.chainId)
         const signedData = await this.wallet.signTransaction({
             nonce,
             to,
             // gasPrice: 2 * 10 ** 9, // 2 gwei
             // gasPrice: 10000,
-            gasPrice: gasPrice.mul(1.5).toNumber(),
+            // gasPrice: 299365979,
+            chainId,
+            gasPrice,
             ...args,
         })
+        console.log(`Queued tx ${ethers.utils.keccak256(signedData)}`)
         await this._db?.create('AccountTransaction', {
             address: this.wallet.address,
             signedData,
